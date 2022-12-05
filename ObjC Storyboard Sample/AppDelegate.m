@@ -6,6 +6,11 @@
 //
 
 #import "AppDelegate.h"
+#import <UIKit/UIKit.h>
+#import "Singular.h"
+#import "Utils.h"
+#import "TabController.h"
+#import "Constants.h"
 
 @interface AppDelegate ()
 
@@ -13,13 +18,42 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     NSLog(@"didFinishLaunchingWithOptions");
     
+    // Starts a new session when the user opens the app if the session timeout has passed / opened using a Singular Link
+    SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
+    config.launchOptions = launchOptions;
+    config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
+    config.skAdNetworkEnabled = YES;
+    config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
+    //config.supportedDomains = @[@"subdomain.mywebsite.com", @"subdomain.myotherwebsite.com"];
+    [Singular start:config];
+    
     return YES;
 }
+
+- (void)processDeeplink:(SingularLinkParams*)params{
+    NSLog(@"processDeeplink");
+    
+    // Get Deeplink data from Singular Link
+    NSString* deeplink = [params getDeepLink];
+    NSString* passthrough = [params getPassthrough];
+    NSString* isDeferredDeeplink = [params isDeferred] ? @"Yes": @"No";
+    
+    // Store in UserDefaults for Access Later
+    [[NSUserDefaults standardUserDefaults] setObject:deeplink forKey:DEEPLINK];
+    [[NSUserDefaults standardUserDefaults] setObject:passthrough forKey:PASSTHROUGH];
+    [[NSUserDefaults standardUserDefaults] setObject:isDeferredDeeplink forKey:IS_DEFERRED];
+    
+    // Handle the Deeplink
+    dispatch_async(dispatch_get_main_queue(), ^{
+        TabController* tabBar = (TabController *)self.window.rootViewController;
+        [tabBar openedWithDeeplink];
+    });
+}
+
 
 
 #pragma mark - UISceneSession lifecycle

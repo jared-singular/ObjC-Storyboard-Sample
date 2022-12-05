@@ -35,26 +35,8 @@
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App did not open with a deep link" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="W3k-L2-bmQ">
-                                <rect key="frame" x="16" y="370.33333333333331" width="254" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="secondaryLabelColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is Deferred" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="1Ie-d4-wCk">
-                                <rect key="frame" x="16" y="430.33333333333331" width="84.666666666666671" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="AccentColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App did not open with a deep link" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ErM-Qo-lHQ">
-                                <rect key="frame" x="16" y="269.33333333333331" width="327" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="secondaryLabelColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App did not open with a deep link" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ifN-WM-kT6">
-                                <rect key="frame" x="15.999999999999986" y="471.33333333333331" width="253.66666666666663" height="20.333333333333314"/>
+                                <rect key="frame" x="16" y="269.33333333333331" width="361" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -65,6 +47,36 @@
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App did not open with a deep link" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="W3k-L2-bmQ">
+                                <rect key="frame" x="16" y="370.33333333333331" width="361" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is Deferred" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="1Ie-d4-wCk">
+                                <rect key="frame" x="16" y="430.33333333333331" width="84.666666666666671" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="AccentColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App did not open with a deep link" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ifN-WM-kT6">
+                                <rect key="frame" x="16" y="471.33333333333331" width="361" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open URL" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ni7-yY-cR9">
+                                <rect key="frame" x="16" y="531.66666666666663" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="AccentColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App did not open with a deep link" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="eLH-TF-anK">
+                                <rect key="frame" x="16" y="572.66666666666663" width="361" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LR8-xn-TbI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -73,7 +85,7 @@
                             <constraint firstItem="LR8-xn-TbI" firstAttribute="trailing" secondItem="PDE-dP-mkS" secondAttribute="trailing" constant="16" id="47r-w8-h9c"/>
                             <constraint firstItem="ifN-WM-kT6" firstAttribute="leading" secondItem="LR8-xn-TbI" secondAttribute="leading" constant="16" id="A7i-xC-sfK"/>
                             <constraint firstItem="evh-SV-3eD" firstAttribute="centerX" secondItem="YBi-YW-kwk" secondAttribute="centerX" id="Di2-5i-Nul"/>
-                            <constraint firstItem="LR8-xn-TbI" firstAttribute="trailing" secondItem="ErM-Qo-lHQ" secondAttribute="trailing" constant="50" id="FUI-is-K8S"/>
+                            <constraint firstItem="LR8-xn-TbI" firstAttribute="trailing" secondItem="ifN-WM-kT6" secondAttribute="trailing" constant="16" id="GBu-2z-O6Q"/>
                             <constraint firstItem="Isi-oc-0Zu" firstAttribute="top" secondItem="evh-SV-3eD" secondAttribute="bottom" constant="28" id="Gcv-v0-NWG"/>
                             <constraint firstItem="W3k-L2-bmQ" firstAttribute="leading" secondItem="LR8-xn-TbI" secondAttribute="leading" constant="16" id="HQD-UV-cmT"/>
                             <constraint firstItem="9YO-vG-kG9" firstAttribute="leading" secondItem="LR8-xn-TbI" secondAttribute="leading" constant="16" id="LP8-qG-foe"/>
@@ -82,19 +94,34 @@
                             <constraint firstItem="Isi-oc-0Zu" firstAttribute="leading" secondItem="LR8-xn-TbI" secondAttribute="leading" constant="16" id="QWT-oN-ckm"/>
                             <constraint firstItem="LR8-xn-TbI" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W3k-L2-bmQ" secondAttribute="trailing" symbolic="YES" id="Rg0-ZF-1r2"/>
                             <constraint firstItem="evh-SV-3eD" firstAttribute="top" secondItem="PDE-dP-mkS" secondAttribute="bottom" constant="21" id="Sxq-Bs-NjD"/>
+                            <constraint firstItem="LR8-xn-TbI" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ni7-yY-cR9" secondAttribute="trailing" symbolic="YES" id="TYO-D7-BGs"/>
+                            <constraint firstItem="LR8-xn-TbI" firstAttribute="trailing" secondItem="ErM-Qo-lHQ" secondAttribute="trailing" constant="16" id="W79-sa-o5F"/>
+                            <constraint firstItem="LR8-xn-TbI" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eLH-TF-anK" secondAttribute="trailing" symbolic="YES" id="aTQ-qQ-T3H"/>
                             <constraint firstItem="LR8-xn-TbI" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ifN-WM-kT6" secondAttribute="trailing" symbolic="YES" id="bYz-Za-Jrp"/>
+                            <constraint firstItem="LR8-xn-TbI" firstAttribute="trailing" secondItem="eLH-TF-anK" secondAttribute="trailing" constant="16" id="bbg-My-FDV"/>
+                            <constraint firstItem="eLH-TF-anK" firstAttribute="leading" secondItem="LR8-xn-TbI" secondAttribute="leading" constant="16" id="cnc-dO-pAM"/>
                             <constraint firstItem="1Ie-d4-wCk" firstAttribute="top" secondItem="W3k-L2-bmQ" secondAttribute="bottom" constant="40" id="eGu-QB-mUW"/>
                             <constraint firstItem="ErM-Qo-lHQ" firstAttribute="top" secondItem="Isi-oc-0Zu" secondAttribute="bottom" constant="20" id="fXy-YD-OnC"/>
+                            <constraint firstItem="eLH-TF-anK" firstAttribute="top" secondItem="Ni7-yY-cR9" secondAttribute="bottom" constant="20" id="fcf-bB-J6o"/>
                             <constraint firstItem="ifN-WM-kT6" firstAttribute="top" secondItem="1Ie-d4-wCk" secondAttribute="bottom" constant="20" id="fl8-MS-KHI"/>
                             <constraint firstItem="LR8-xn-TbI" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9YO-vG-kG9" secondAttribute="trailing" symbolic="YES" id="jLX-ME-0ne"/>
+                            <constraint firstItem="Ni7-yY-cR9" firstAttribute="leading" secondItem="LR8-xn-TbI" secondAttribute="leading" constant="16" id="mJn-K2-SqY"/>
+                            <constraint firstItem="LR8-xn-TbI" firstAttribute="trailing" secondItem="W3k-L2-bmQ" secondAttribute="trailing" constant="16" id="nL3-id-P7T"/>
                             <constraint firstItem="W3k-L2-bmQ" firstAttribute="top" secondItem="9YO-vG-kG9" secondAttribute="bottom" constant="20" id="rj2-39-WTc"/>
                             <constraint firstItem="PDE-dP-mkS" firstAttribute="top" secondItem="LR8-xn-TbI" secondAttribute="top" constant="20" id="rp3-VI-kOV"/>
                             <constraint firstItem="PDE-dP-mkS" firstAttribute="leading" secondItem="LR8-xn-TbI" secondAttribute="leading" constant="16" id="vPf-WV-XoI"/>
                             <constraint firstItem="LR8-xn-TbI" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1Ie-d4-wCk" secondAttribute="trailing" symbolic="YES" id="whB-rU-VMT"/>
                             <constraint firstItem="ErM-Qo-lHQ" firstAttribute="leading" secondItem="LR8-xn-TbI" secondAttribute="leading" constant="16" id="xTg-1N-hbK"/>
+                            <constraint firstItem="Ni7-yY-cR9" firstAttribute="top" secondItem="ifN-WM-kT6" secondAttribute="bottom" constant="40" id="yU5-fS-CxL"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Deep Links" image="link" catalog="system" id="Znq-pn-QX1"/>
+                    <connections>
+                        <outlet property="deeplinkField" destination="ErM-Qo-lHQ" id="MR3-Qk-rPa"/>
+                        <outlet property="isDeferredField" destination="ifN-WM-kT6" id="ntw-Gq-fTD"/>
+                        <outlet property="openURLField" destination="eLH-TF-anK" id="iKp-ql-e3i"/>
+                        <outlet property="passthroughField" destination="W3k-L2-bmQ" id="4Dy-GO-r0j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kwa-LG-8FA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

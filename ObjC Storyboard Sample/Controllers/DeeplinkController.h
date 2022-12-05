@@ -11,6 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DeeplinkController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *deeplinkField;
+@property (weak, nonatomic) IBOutlet UILabel *passthroughField;
+@property (weak, nonatomic) IBOutlet UILabel *isDeferredField;
+@property (weak, nonatomic) IBOutlet UILabel *openURLField;
+
 @end
 
 NS_ASSUME_NONNULL_END

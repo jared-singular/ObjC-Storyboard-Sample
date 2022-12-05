@@ -5,7 +5,13 @@
 //  Created by Jared Ornstead on 12/2/22.
 //
 
+#import <UIKit/UIKit.h>
 #import "SceneDelegate.h"
+#import "Singular.h"
+#import "Utils.h"
+#import <AppTrackingTransparency/ATTrackingManager.h>
+#import <AdSupport/ASIdentifierManager.h>
+#import "Constants.h"
 
 @interface SceneDelegate ()
 
@@ -13,13 +19,82 @@
 
 @implementation SceneDelegate
 
+- (void)processDeeplink:(SingularLinkParams*)params{
+    NSLog(@"processDeeplink");
+    
+    // Get Deeplink data from Singular Link
+    NSString* deeplink = [params getDeepLink];
+    NSString* passthrough = [params getPassthrough];
+    NSString* isDeferredDeeplink = [params isDeferred] ? @"Yes": @"No";
+    
+    // Store in UserDefaults for access from DeeplinkController
+    [[NSUserDefaults standardUserDefaults] setObject:deeplink forKey:DEEPLINK];
+    [[NSUserDefaults standardUserDefaults] setObject:passthrough forKey:PASSTHROUGH];
+    [[NSUserDefaults standardUserDefaults] setObject:isDeferredDeeplink forKey:IS_DEFERRED];
+            
+    // Handle to the DeeplinkController if deeplink exists
+    if (deeplink) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            TabController* tabBar = (TabController *)self.window.rootViewController;
+            [tabBar openedWithDeeplink];
+        });
+    }
+}
 
+// willConnectToSession
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     NSLog(@"willConnectToSession");
-    // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-    // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-    // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    //Might be able to use this instead of finsihed with options.
+    
+    NSUserActivity* userActivity = [[[connectionOptions userActivities] allObjects] firstObject];
+    NSURL* url = userActivity.webpageURL;
+    NSLog(@"willConnectToSession OpenURL: %@", url);
+    [[NSUserDefaults standardUserDefaults] setObject:url.absoluteString forKey:OPENURL];
+    
+    SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
+    config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
+    config.skAdNetworkEnabled = YES;
+    config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
+    //config.supportedDomains = @[@"subdomain.mywebsite.com", @"subdomain.myotherwebsite.com"];
+    config.userActivity = userActivity;
+    [Singular start:config];
 }
+
+// continueUserActivity
+- (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity{
+    NSLog(@"continueUserActivity");
+    NSURL* url = userActivity.webpageURL;
+    NSLog(@"continueUserActivity Open URL: %@", url);
+    [[NSUserDefaults standardUserDefaults] setObject:url.absoluteString forKey:OPENURL];
+    
+    SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
+    config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
+    config.skAdNetworkEnabled = YES;
+    config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
+    config.userActivity = userActivity;
+    //config.supportedDomains = @[@"subdomain.mywebsite.com", @"subdomain.myotherwebsite.com"];
+    [Singular start:config];
+}
+
+// openURLContexts
+- (void)scene:(UIScene *)scene openURLContexts:(nonnull NSSet<UIOpenURLContext *> *)URLContexts {
+    NSLog(@"openURLContexts");
+    
+    NSURL* url = [[URLContexts allObjects] firstObject].URL;
+    NSLog(@"openURLContexts OpenURL: %@", url);
+    [[NSUserDefaults standardUserDefaults] setObject:url.absoluteString forKey:OPENURL];
+    
+    if(url){
+        SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
+        config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
+        config.skAdNetworkEnabled = YES;
+        config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
+        config.openUrl = url;
+        //config.supportedDomains = @[@"subdomain.mywebsite.com", @"subdomain.myotherwebsite.com"];
+        [Singular start:config];
+   }
+}
+
 
 
 - (void)sceneDidDisconnect:(UIScene *)scene {
@@ -30,11 +105,18 @@
     // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
 }
 
-
 - (void)sceneDidBecomeActive:(UIScene *)scene {
     NSLog(@"sceneDidBecomeActive");
     // Called when the scene has moved from an inactive state to an active state.
     // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+    
+    // Request App Tracking Transparency when the App is Ready, provides IDFA on consent to Singular SDK
+    if (@available(iOS 14, *)) {
+        double delayInSeconds = 2.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status){}];});
+    }
 }
 
 
