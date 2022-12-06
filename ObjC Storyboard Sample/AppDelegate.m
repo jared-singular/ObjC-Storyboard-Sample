@@ -21,8 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     NSLog(@"didFinishLaunchingWithOptions");
-    //NSString* IDFV = [[[UIDevice currentDevice] identifierForVendor] UUIDString]];
-    //NSLog(@"IDFV: %@", IDFV);
+    
     // Starts a new session when the user opens the app if the session timeout has passed / opened using a Singular Link
     SingularConfig *config = [self getConfig];
     config.launchOptions = launchOptions;
@@ -36,7 +35,7 @@
     config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
     config.skAdNetworkEnabled = YES;
     config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
-    //config.conversionValueUpdatedCallback = ^(NSInteger newConversionValue) {NSLog(@"Conversion Value Callback: %lu", (unsigned long)newConversionValue);};
+    config.conversionValueUpdatedCallback = ^(NSInteger newConversionValue) {NSLog(@"Conversion Value Callback: %lu", (unsigned long)newConversionValue);};
     config.supportedDomains = @[@"www.jaredornstead.com"];
     [config setGlobalProperty:@"anonymous_id" withValue:@"2ed20738-059d-42b5-ab80-5aa0c530e3e1" overrideExisting:YES];
     

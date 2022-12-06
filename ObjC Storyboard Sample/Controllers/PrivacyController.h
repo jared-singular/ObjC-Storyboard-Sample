@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UISwitch *limited_data_sharing;
 @property (weak, nonatomic) IBOutlet UILabel *idfvValue;
 @property (weak, nonatomic) IBOutlet UILabel *idfaValue;
+@property (weak, nonatomic) IBOutlet UIButton *shareDeviceInfo;
 
 @end
 

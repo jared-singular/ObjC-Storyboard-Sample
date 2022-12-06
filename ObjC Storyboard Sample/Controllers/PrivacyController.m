@@ -67,4 +67,23 @@
         }
 }
 
+- (IBAction)shareDeviceInfo:(id)sender {
+    NSString* IDFV = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSString* IDFA = [[NSUserDefaults standardUserDefaults] objectForKey:@"idfa"];
+    if (IDFV || IDFA) {
+        // Add your share logic here
+        NSLog(@"Sharing Device Info");
+        
+        // Share Link to ShareController
+        NSArray *items = @[[NSString stringWithFormat:@"Device Identifiers:\n\nIDFV: %@\nIDFA: %@",IDFV, IDFA]];
+        UIActivityViewController* shareController = [[UIActivityViewController alloc]initWithActivityItems:items applicationActivities:nil];
+        shareController.modalPresentationStyle = UIModalPresentationPopover;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self presentViewController:shareController animated:YES completion:nil];
+        });
+    }
+}
+
+
+
 @end

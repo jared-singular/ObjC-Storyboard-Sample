@@ -23,7 +23,7 @@
 
 
 - (IBAction)loginClicked:(id)sender {
-    NSString* userID = [_userIDField text];
+    NSString* userID = self.userIDField.text;
     
     if([Utils isEmptyOrNull:userID]){
         [Utils displayMessage:[[NSString alloc] initWithFormat:@"Enter a UserID to simulate the login process!"] withView:self];
@@ -31,7 +31,7 @@
         NSLog(@"Login Button Clicked");
         [Singular setCustomUserId:userID];
         [Singular event:EVENT_SNG_LOGIN];
-        _userIDField.text = nil;
+        self.userIDField.text = nil;
         [Utils displayMessage:[[NSString alloc] initWithFormat:@"Login Success!"] withView:self];
         
     }

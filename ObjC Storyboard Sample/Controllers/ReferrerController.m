@@ -22,16 +22,18 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
+    // Clear the Referrer data so they are not used again.
     self.referrerIDField.text = nil;
     self.referrerNameField.text = nil;
 }
 
 - (IBAction)sharedClicked:(id)sender {
     NSLog(@"Share Link Button Clicked");
+    
+    // Define Parameters for Referral Link
     NSString* referrerBaseLink = @"https://joobjcstatic.sng.link/Cje1e/aknl?_dl=joobjcstatic%3A%2F%2Fmydeeplink/referrer&_smtype=3";
     NSString* referrerID = self.referrerIDField.text;
     NSString* referrerName = self.referrerNameField.text;
-    
     NSDictionary* passthroughParams = @{@"channel": @"sms"};
     
     [Singular createReferrerShortLink:referrerBaseLink
