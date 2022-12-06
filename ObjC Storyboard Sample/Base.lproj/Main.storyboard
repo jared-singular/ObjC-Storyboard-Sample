@@ -141,12 +141,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="CCPA Under Age 13 Opt-Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB9-vy-OSv">
-                                <rect key="frame" x="16" y="351.66666666666669" width="197.66666666666666" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" name="AccentColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgd-Y4-VnJ">
                                 <rect key="frame" x="154" y="406.66666666666669" width="85" height="20.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -159,8 +153,8 @@
                                     <constraint firstAttribute="width" secondItem="req-aC-Bil" secondAttribute="height" multiplier="9:2" id="qPu-Ux-cvJ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Limited Data Sharing Opt-In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAh-rC-RLW">
-                                <rect key="frame" x="16" y="298.66666666666669" width="191.66666666666666" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CCPA Limited Data Sharing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAh-rC-RLW">
+                                <rect key="frame" x="16" y="298.66666666666669" width="186.33333333333334" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
@@ -177,20 +171,14 @@
                                     <action selector="limitedDataSharingOptionToggled:" destination="5YU-oL-c1m" eventType="valueChanged" id="bJt-ib-1zi"/>
                                 </connections>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="right" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Ot-kx-2Yk">
-                                <rect key="frame" x="328" y="345.33333333333331" width="51" height="31"/>
-                                <connections>
-                                    <action selector="ccpaUnderAgeToggled:" destination="5YU-oL-c1m" eventType="valueChanged" id="uxO-Pp-64D"/>
-                                </connections>
-                            </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="idfv_value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="4" translatesAutoresizingMaskIntoConstraints="NO" id="qE6-a7-e8q">
                                 <rect key="frame" x="16" y="486.66666666666669" width="361" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" systemColor="placeholderTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="GDPR / CCPA Age 13-16 Opt-Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g66-zn-qAb">
-                                <rect key="frame" x="16" y="246.66666666666666" width="227" height="17.999999999999972"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="GDPR Opt-Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g66-zn-qAb">
+                                <rect key="frame" x="16.000000000000007" y="246.66666666666666" width="101.66666666666669" height="17.999999999999972"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
@@ -201,14 +189,18 @@
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTg-nw-l1K">
-                                <rect key="frame" x="166.66666666666666" y="559.33333333333337" width="60" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Next"/>
-                                <connections>
-                                    <action selector="nextClicked:" destination="5YU-oL-c1m" eventType="touchUpInside" id="XDv-Aa-5Ue"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="idfa_value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="4" translatesAutoresizingMaskIntoConstraints="NO" id="0mF-G8-bij">
+                                <rect key="frame" x="16" y="575" width="361" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" systemColor="placeholderTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="IDFA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTn-Up-voa">
+                                <rect key="frame" x="16" y="537" width="33" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" name="AccentColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OjI-yA-IGc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -216,40 +208,42 @@
                             <constraint firstItem="req-aC-Bil" firstAttribute="leading" secondItem="OjI-yA-IGc" secondAttribute="leading" constant="16" id="1GR-Km-Aaa"/>
                             <constraint firstItem="iNZ-8h-9Me" firstAttribute="centerY" secondItem="XAh-rC-RLW" secondAttribute="centerY" id="1H7-7V-Gfs"/>
                             <constraint firstItem="OjI-yA-IGc" firstAttribute="trailing" secondItem="qE6-a7-e8q" secondAttribute="trailing" constant="16" id="1yO-Ji-MeV"/>
-                            <constraint firstItem="hgd-Y4-VnJ" firstAttribute="top" secondItem="HB9-vy-OSv" secondAttribute="bottom" constant="37" id="2Fw-Hx-Jkt"/>
                             <constraint firstItem="XAh-rC-RLW" firstAttribute="leading" secondItem="OjI-yA-IGc" secondAttribute="leading" constant="16" id="2H1-9M-n1X"/>
+                            <constraint firstItem="0mF-G8-bij" firstAttribute="leading" secondItem="OjI-yA-IGc" secondAttribute="leading" constant="16" id="2bG-qh-5wv"/>
+                            <constraint firstItem="OjI-yA-IGc" firstAttribute="trailing" secondItem="0mF-G8-bij" secondAttribute="trailing" constant="16" id="2th-dl-gP3"/>
                             <constraint firstItem="iNZ-8h-9Me" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XAh-rC-RLW" secondAttribute="trailing" constant="8" symbolic="YES" id="64m-Li-9pk"/>
+                            <constraint firstItem="uTn-Up-voa" firstAttribute="leading" secondItem="OjI-yA-IGc" secondAttribute="leading" constant="16" id="7b1-ki-Pul"/>
                             <constraint firstItem="MIO-GM-cx2" firstAttribute="leading" secondItem="OjI-yA-IGc" secondAttribute="leading" constant="16" id="9S2-4m-SOK"/>
                             <constraint firstItem="qE6-a7-e8q" firstAttribute="leading" secondItem="OjI-yA-IGc" secondAttribute="leading" constant="16" id="E44-Ob-uip"/>
                             <constraint firstItem="OjI-yA-IGc" firstAttribute="trailing" secondItem="iNZ-8h-9Me" secondAttribute="trailing" constant="16" id="EOM-fT-kFw"/>
                             <constraint firstItem="hgd-Y4-VnJ" firstAttribute="centerX" secondItem="HQK-iy-YH4" secondAttribute="centerX" id="Erz-ij-WhV"/>
                             <constraint firstItem="qE6-a7-e8q" firstAttribute="top" secondItem="MIO-GM-cx2" secondAttribute="bottom" constant="20" id="F7I-ad-IZF"/>
                             <constraint firstItem="imA-H9-2yF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="g66-zn-qAb" secondAttribute="trailing" constant="8" symbolic="YES" id="KPp-lh-ZBJ"/>
-                            <constraint firstItem="CTg-nw-l1K" firstAttribute="centerX" secondItem="HQK-iy-YH4" secondAttribute="centerX" id="KtY-3q-q8i"/>
+                            <constraint firstItem="0mF-G8-bij" firstAttribute="top" secondItem="uTn-Up-voa" secondAttribute="bottom" constant="20" id="Mxp-fw-JPW"/>
                             <constraint firstItem="imA-H9-2yF" firstAttribute="centerY" secondItem="g66-zn-qAb" secondAttribute="centerY" id="Nx0-hB-Iau"/>
                             <constraint firstItem="hgd-Y4-VnJ" firstAttribute="centerX" secondItem="HQK-iy-YH4" secondAttribute="centerX" id="PkM-fB-Yad"/>
                             <constraint firstItem="OjI-yA-IGc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qE6-a7-e8q" secondAttribute="trailing" symbolic="YES" id="PyF-Pq-x4t"/>
-                            <constraint firstItem="CTg-nw-l1K" firstAttribute="top" secondItem="qE6-a7-e8q" secondAttribute="bottom" constant="54.5" id="Vfn-Qa-KN3"/>
+                            <constraint firstItem="OjI-yA-IGc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uTn-Up-voa" secondAttribute="trailing" symbolic="YES" id="R4X-pa-rbr"/>
                             <constraint firstItem="OjI-yA-IGc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MIO-GM-cx2" secondAttribute="trailing" symbolic="YES" id="X4H-Oz-ni6"/>
-                            <constraint firstItem="5Ot-kx-2Yk" firstAttribute="top" secondItem="iNZ-8h-9Me" secondAttribute="bottom" constant="22" id="XTO-nr-YNI"/>
-                            <constraint firstItem="5Ot-kx-2Yk" firstAttribute="centerY" secondItem="HB9-vy-OSv" secondAttribute="centerY" id="Xey-9L-aUd"/>
                             <constraint firstItem="OjI-yA-IGc" firstAttribute="trailing" secondItem="req-aC-Bil" secondAttribute="trailing" constant="16" id="ZJx-Cu-QAG"/>
                             <constraint firstItem="tjV-KJ-hZ1" firstAttribute="top" secondItem="req-aC-Bil" secondAttribute="bottom" constant="21" id="bnI-Rv-x6P"/>
+                            <constraint firstItem="hgd-Y4-VnJ" firstAttribute="top" secondItem="XAh-rC-RLW" secondAttribute="bottom" constant="89.999999999999943" id="dM4-eJ-oqd"/>
                             <constraint firstItem="tjV-KJ-hZ1" firstAttribute="centerX" secondItem="HQK-iy-YH4" secondAttribute="centerX" id="daE-sV-Ll9"/>
                             <constraint firstItem="MIO-GM-cx2" firstAttribute="top" secondItem="hgd-Y4-VnJ" secondAttribute="bottom" constant="21.333333333333314" id="eoe-WV-OQW"/>
+                            <constraint firstItem="uTn-Up-voa" firstAttribute="top" secondItem="qE6-a7-e8q" secondAttribute="bottom" constant="32.333333333333314" id="gog-Z3-Mlo"/>
                             <constraint firstItem="iNZ-8h-9Me" firstAttribute="top" secondItem="imA-H9-2yF" secondAttribute="bottom" constant="21" id="hN9-FY-rsm"/>
-                            <constraint firstItem="HB9-vy-OSv" firstAttribute="leading" secondItem="OjI-yA-IGc" secondAttribute="leading" constant="16" id="ha5-3A-Qbi"/>
                             <constraint firstItem="imA-H9-2yF" firstAttribute="top" secondItem="req-aC-Bil" secondAttribute="bottom" constant="81" id="iUD-xb-9WO"/>
                             <constraint firstItem="OjI-yA-IGc" firstAttribute="trailing" secondItem="imA-H9-2yF" secondAttribute="trailing" constant="16" id="lvA-kv-T7I"/>
-                            <constraint firstItem="5Ot-kx-2Yk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HB9-vy-OSv" secondAttribute="trailing" constant="8" symbolic="YES" id="nba-Mc-KB7"/>
-                            <constraint firstItem="OjI-yA-IGc" firstAttribute="trailing" secondItem="5Ot-kx-2Yk" secondAttribute="trailing" constant="16" id="rID-kO-3sa"/>
                             <constraint firstItem="req-aC-Bil" firstAttribute="top" secondItem="OjI-yA-IGc" secondAttribute="top" constant="20" id="tEg-df-wqA"/>
                             <constraint firstItem="g66-zn-qAb" firstAttribute="leading" secondItem="OjI-yA-IGc" secondAttribute="leading" constant="16" id="xnv-hE-ayV"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Privacy" image="person.fill" catalog="system" id="w9L-YM-9pU"/>
                     <connections>
+                        <outlet property="gdpr" destination="imA-H9-2yF" id="Iqv-Xc-xcL"/>
+                        <outlet property="idfaValue" destination="0mF-G8-bij" id="ENi-Mg-T5m"/>
                         <outlet property="idfvValue" destination="qE6-a7-e8q" id="yBn-Zk-pLw"/>
+                        <outlet property="limited_data_sharing" destination="iNZ-8h-9Me" id="G57-zs-hbT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xCP-GV-umo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -317,6 +311,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Login" image="key.fill" catalog="system" id="IFq-eH-wSP"/>
+                    <connections>
+                        <outlet property="userIDField" destination="1O4-wp-agf" id="WPq-E6-Xcd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyt-kg-SnK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -591,6 +588,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Share Links" image="link.badge.plus" catalog="system" id="lbI-tZ-3aT"/>
+                    <connections>
+                        <outlet property="referrerIDField" destination="Dg9-s0-hX2" id="gp9-K3-psY"/>
+                        <outlet property="referrerNameField" destination="DBn-wG-BV5" id="ou3-NU-uNn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PgE-aM-eur" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

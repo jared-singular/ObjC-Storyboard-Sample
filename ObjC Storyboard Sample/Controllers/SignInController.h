@@ -10,6 +10,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SignInController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *userIDField;
+
 
 @end
 

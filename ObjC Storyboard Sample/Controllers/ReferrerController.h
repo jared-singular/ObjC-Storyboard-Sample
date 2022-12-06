@@ -10,6 +10,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ReferrerController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *referrerNameField;
+@property (weak, nonatomic) IBOutlet UITextField *referrerIDField;
 
 @end
 

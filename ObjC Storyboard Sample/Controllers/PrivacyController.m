@@ -11,7 +11,6 @@
 #import "Utils.h"
 
 @interface PrivacyController ()
-@property (weak, nonatomic) IBOutlet UILabel *idfvValue;
 
 @end
 
@@ -19,39 +18,53 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"PrivacyController - viewDidLoad");
-    // Do any additional setup after loading the view.
-    NSString* IDFV = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    NSLog(@"IDFV: %@", IDFV);
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    NSLog(@"PrivacyController - viewWillAppear");
+    NSLog(@"IDFV: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"idfv"]);
+    NSLog(@"IDFA: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"idfa"]);
     [self.idfvValue setText:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
-    
+    [self.idfaValue setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"idfa"]];
 }
 
-
-- (IBAction)nextClicked:(id)sender {
-    NSLog(@"Next Button Clicked");
-    //Loading a view controller from a storyboard when button is clicked
-    //https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/PresentingaViewController.html#//apple_ref/doc/uid/TP40007457-CH14-SW1
-    
-    UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    SignInController* myVC = [sb instantiateViewControllerWithIdentifier:@"SignInController"];
-     
-    // Configure the view controller.
-     
-    // Display the view controller
-    [self presentViewController:myVC animated:YES completion:nil];
-    //[self.navigationController pushViewController:myVC animated:YES ];
-}
 - (IBAction)gdprToggled:(id)sender {
-    NSLog(@"GDPR Option Toggled");
+    if (self.gdpr.isOn){
+        [Singular event:@"GDPR_OptOut"];
+        [Singular stopAllTracking];
+        
+        //Logging for testing
+        NSLog(@"GDPR Tracking OptOut - Tracking Stopped");
+        [Utils displayMessage:[[NSString alloc] initWithFormat:@"GDPR Tracking OptOut - Tracking Stopped"] withView:self];
+    } else {
+        if ([Singular isAllTrackingStopped] == TRUE){
+            [Singular resumeAllTracking];
+            [Singular trackingOptIn];
+            [Singular event:@"GDPR_OptIn"];
+            
+            //Logging for testing
+            NSLog(@"GDPR Tracking OptIn - Tracking Started");
+            [Utils displayMessage:[[NSString alloc] initWithFormat:@"GDPR Tracking OptIn - Tracking Started"] withView:self];
+        }
+    }
 }
 
 - (IBAction)limitedDataSharingOptionToggled:(id)sender {
-    NSLog(@"Limited Data Sharing Option Toggled");
-}
-
-- (IBAction)ccpaUnderAgeToggled:(id)sender {
-    NSLog(@"CCPA Under Age Option Toggled");
+    if (self.limited_data_sharing.isOn){
+        [Singular limitDataSharing:YES];
+        [Singular event:@"LimitedDataSharing_OptIn"];
+        
+        //Logging for testing
+        NSLog(@"Limited Data Sharing OptIn - Tracking remains enabled but limited data will not be shared with Networks");
+        [Utils displayMessage:[[NSString alloc] initWithFormat:@"Limited Data Sharing OptIn - Tracking remains enabled but limited data will not be shared with Networks"] withView:self];
+    } else {
+        [Singular limitDataSharing:NO];
+        [Singular event:@"LimitedDataSharing_OptOut"];
+        
+        //Logging for testing
+        NSLog(@"Limited Data Sharing OptOut - All Data will be shared with networks");
+        [Utils displayMessage:[[NSString alloc] initWithFormat:@"Limited Data Sharing OptOut - All Data will be shared with networks"] withView:self];
+        }
 }
 
 @end

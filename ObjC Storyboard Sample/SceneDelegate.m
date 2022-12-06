@@ -19,6 +19,62 @@
 
 @implementation SceneDelegate
 
+// willConnectToSession
+- (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
+    NSLog(@"willConnectToSession");
+    //Might be able to use this instead of finsihed with options.
+    NSString* IDFV = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSLog(@"IDFV: %@", IDFV);
+    
+    NSUserActivity* userActivity = [[[connectionOptions userActivities] allObjects] firstObject];
+    NSURL* url = userActivity.webpageURL;
+    NSLog(@"willConnectToSession OpenURL: %@", url);
+    [[NSUserDefaults standardUserDefaults] setObject:url.absoluteString forKey:OPENURL];
+    
+    SingularConfig *config = [self getConfig];
+    config.userActivity = userActivity;
+    [Singular start:config];
+}
+
+// continueUserActivity
+- (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity{
+    NSLog(@"continueUserActivity");
+    NSURL* url = userActivity.webpageURL;
+    NSLog(@"continueUserActivity Open URL: %@", url);
+    [[NSUserDefaults standardUserDefaults] setObject:url.absoluteString forKey:OPENURL];
+    
+    SingularConfig *config = [self getConfig];
+    config.userActivity = userActivity;
+    [Singular start:config];
+}
+
+// openURLContexts
+- (void)scene:(UIScene *)scene openURLContexts:(nonnull NSSet<UIOpenURLContext *> *)URLContexts {
+    NSLog(@"openURLContexts");
+    
+    NSURL* url = [[URLContexts allObjects] firstObject].URL;
+    NSLog(@"openURLContexts OpenURL: %@", url);
+    [[NSUserDefaults standardUserDefaults] setObject:url.absoluteString forKey:OPENURL];
+    
+    if(url){
+        SingularConfig *config = [self getConfig];
+        config.openUrl = url;
+        [Singular start:config];
+   }
+}
+
+- (SingularConfig *)getConfig {
+    SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
+    config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
+    config.skAdNetworkEnabled = YES;
+    config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
+    //config.conversionValueUpdatedCallback = ^(NSInteger newConversionValue) {NSLog(@"Conversion Value Callback: %lu", (unsigned long)newConversionValue);};
+    config.supportedDomains = @[@"www.jaredornstead.com"];
+    [config setGlobalProperty:@"anonymous_id" withValue:@"2ed20738-059d-42b5-ab80-5aa0c530e3e1" overrideExisting:YES];
+    
+    return config;
+}
+
 - (void)processDeeplink:(SingularLinkParams*)params{
     NSLog(@"processDeeplink");
     
@@ -41,62 +97,6 @@
     }
 }
 
-// willConnectToSession
-- (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
-    NSLog(@"willConnectToSession");
-    //Might be able to use this instead of finsihed with options.
-    
-    NSUserActivity* userActivity = [[[connectionOptions userActivities] allObjects] firstObject];
-    NSURL* url = userActivity.webpageURL;
-    NSLog(@"willConnectToSession OpenURL: %@", url);
-    [[NSUserDefaults standardUserDefaults] setObject:url.absoluteString forKey:OPENURL];
-    
-    SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
-    config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
-    config.skAdNetworkEnabled = YES;
-    config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
-    //config.supportedDomains = @[@"subdomain.mywebsite.com", @"subdomain.myotherwebsite.com"];
-    config.userActivity = userActivity;
-    [Singular start:config];
-}
-
-// continueUserActivity
-- (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity{
-    NSLog(@"continueUserActivity");
-    NSURL* url = userActivity.webpageURL;
-    NSLog(@"continueUserActivity Open URL: %@", url);
-    [[NSUserDefaults standardUserDefaults] setObject:url.absoluteString forKey:OPENURL];
-    
-    SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
-    config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
-    config.skAdNetworkEnabled = YES;
-    config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
-    config.userActivity = userActivity;
-    //config.supportedDomains = @[@"subdomain.mywebsite.com", @"subdomain.myotherwebsite.com"];
-    [Singular start:config];
-}
-
-// openURLContexts
-- (void)scene:(UIScene *)scene openURLContexts:(nonnull NSSet<UIOpenURLContext *> *)URLContexts {
-    NSLog(@"openURLContexts");
-    
-    NSURL* url = [[URLContexts allObjects] firstObject].URL;
-    NSLog(@"openURLContexts OpenURL: %@", url);
-    [[NSUserDefaults standardUserDefaults] setObject:url.absoluteString forKey:OPENURL];
-    
-    if(url){
-        SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
-        config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
-        config.skAdNetworkEnabled = YES;
-        config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
-        config.openUrl = url;
-        //config.supportedDomains = @[@"subdomain.mywebsite.com", @"subdomain.myotherwebsite.com"];
-        [Singular start:config];
-   }
-}
-
-
-
 - (void)sceneDidDisconnect:(UIScene *)scene {
     NSLog(@"sceneDidDisconnect");
     // Called as the scene is being released by the system.
@@ -112,10 +112,17 @@
     
     // Request App Tracking Transparency when the App is Ready, provides IDFA on consent to Singular SDK
     if (@available(iOS 14, *)) {
-        double delayInSeconds = 2.0;
+        double delayInSeconds = 1.0;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status){}];});
+            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status){
+                NSString* IDFV = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+                NSString* IDFA = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+                [[NSUserDefaults standardUserDefaults] setObject:IDFV forKey:@"idfv"];
+                [[NSUserDefaults standardUserDefaults] setObject:IDFA forKey:@"idfa"];
+            }];
+            
+        });
     }
 }
 
