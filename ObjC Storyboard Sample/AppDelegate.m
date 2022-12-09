@@ -5,8 +5,9 @@
 //  Created by Jared Ornstead on 12/2/22.
 //
 
-#import "AppDelegate.h"
+
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 #import "Singular.h"
 #import "Utils.h"
 #import "TabController.h"
@@ -19,50 +20,11 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    NSLog(@"didFinishLaunchingWithOptions");
-    
-    // Starts a new session when the user opens the app if the session timeout has passed / opened using a Singular Link
-    SingularConfig *config = [self getConfig];
-    config.launchOptions = launchOptions;
-    [Singular start:config];
+    NSLog(@"-- didFinishLaunchingWithOptions");
+    NSLog(@"-- Note: This app is built with SceneDelegate so the AppDelegate will not be used!");
     
     return YES;
 }
-
-- (SingularConfig *)getConfig {
-    SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
-    config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
-    config.skAdNetworkEnabled = YES;
-    config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
-    config.conversionValueUpdatedCallback = ^(NSInteger newConversionValue) {NSLog(@"Conversion Value Callback: %lu", (unsigned long)newConversionValue);};
-    config.supportedDomains = @[@"www.jaredornstead.com"];
-    [config setGlobalProperty:@"anonymous_id" withValue:@"2ed20738-059d-42b5-ab80-5aa0c530e3e1" overrideExisting:YES];
-    
-    return config;
-}
-
-- (void)processDeeplink:(SingularLinkParams*)params{
-    NSLog(@"processDeeplink");
-    
-    // Get Deeplink data from Singular Link
-    NSString* deeplink = [params getDeepLink];
-    NSString* passthrough = [params getPassthrough];
-    NSString* isDeferredDeeplink = [params isDeferred] ? @"Yes": @"No";
-    
-    // Store in UserDefaults for Access Later
-    [[NSUserDefaults standardUserDefaults] setObject:deeplink forKey:DEEPLINK];
-    [[NSUserDefaults standardUserDefaults] setObject:passthrough forKey:PASSTHROUGH];
-    [[NSUserDefaults standardUserDefaults] setObject:isDeferredDeeplink forKey:IS_DEFERRED];
-    
-    // Handle the Deeplink
-    dispatch_async(dispatch_get_main_queue(), ^{
-        TabController* tabBar = (TabController *)self.window.rootViewController;
-        [tabBar openedWithDeeplink];
-    });
-}
-
-
 
 #pragma mark - UISceneSession lifecycle
 

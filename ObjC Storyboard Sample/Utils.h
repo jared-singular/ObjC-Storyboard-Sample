@@ -11,6 +11,5 @@
 
 + (BOOL)isEmptyOrNull:(NSString *)text;
 + (void)displayMessage:(NSString*) message withView:(UIViewController*) view;
-
-
++ (void)requestTrackingAuthorization;
 @end

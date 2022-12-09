@@ -18,32 +18,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:@"PrivacyController" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_ID];
+    [Singular event:EVENT_SNG_CONTENT_VIEW withArgs:dic];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    NSLog(@"PrivacyController - viewWillAppear");
-    NSLog(@"IDFV: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"idfv"]);
-    NSLog(@"IDFA: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"idfa"]);
+    NSLog(@"-- PrivacyController - viewWillAppear");
+    
+    // Displaying the Identifiers on the PrivacyController
     [self.idfvValue setText:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
     [self.idfaValue setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"idfa"]];
 }
 
 - (IBAction)gdprToggled:(id)sender {
     if (self.gdpr.isOn){
+        // If User toggles the GDPR Opt Out to ON, we want to disable the Singular SDK to prohibit Tracking
         [Singular event:@"GDPR_OptOut"];
-        [Singular stopAllTracking];
         
-        //Logging for testing
-        NSLog(@"GDPR Tracking OptOut - Tracking Stopped");
+        [Singular stopAllTracking]; // This disables the Singular SDK
+        
+        NSLog(@"-- GDPR Tracking OptOut - Tracking Stopped");
         [Utils displayMessage:[[NSString alloc] initWithFormat:@"GDPR Tracking OptOut - Tracking Stopped"] withView:self];
+        
     } else {
+        // If User toggles the GDPR Opt Out to OFF, we want to check the tracking state, and re-enable Tracking
         if ([Singular isAllTrackingStopped] == TRUE){
-            [Singular resumeAllTracking];
-            [Singular trackingOptIn];
+            
+            [Singular resumeAllTracking]; // This enables the Singular SDK
+            [Singular trackingOptIn]; // This notifies Singular the User is Opt'ing in for Tracking
+            
             [Singular event:@"GDPR_OptIn"];
             
-            //Logging for testing
-            NSLog(@"GDPR Tracking OptIn - Tracking Started");
+            NSLog(@"-- GDPR Tracking OptIn - Tracking Started");
             [Utils displayMessage:[[NSString alloc] initWithFormat:@"GDPR Tracking OptIn - Tracking Started"] withView:self];
         }
     }
@@ -51,17 +58,18 @@
 
 - (IBAction)limitedDataSharingOptionToggled:(id)sender {
     if (self.limited_data_sharing.isOn){
-        [Singular limitDataSharing:YES];
+        // If User toggles the CCPA Limited Data Sharing Opt Out to ON, we want to disable datasharing for this device
+        [Singular limitDataSharing:YES]; // This will limit data sharing to ad network partners
         [Singular event:@"LimitedDataSharing_OptIn"];
         
         //Logging for testing
-        NSLog(@"Limited Data Sharing OptIn - Tracking remains enabled but limited data will not be shared with Networks");
+        NSLog(@"-- Limited Data Sharing OptIn - Tracking remains enabled but limited data will not be shared with Networks");
         [Utils displayMessage:[[NSString alloc] initWithFormat:@"Limited Data Sharing OptIn - Tracking remains enabled but limited data will not be shared with Networks"] withView:self];
     } else {
-        [Singular limitDataSharing:NO];
+        // If User toggles the CCPA Limited Data Sharing Opt Out to OFF, we want to re-enable datasharing for this device
+        [Singular limitDataSharing:NO]; // This will reactivate data sharing to ad network partners
         [Singular event:@"LimitedDataSharing_OptOut"];
         
-        //Logging for testing
         NSLog(@"Limited Data Sharing OptOut - All Data will be shared with networks");
         [Utils displayMessage:[[NSString alloc] initWithFormat:@"Limited Data Sharing OptOut - All Data will be shared with networks"] withView:self];
         }
@@ -71,10 +79,7 @@
     NSString* IDFV = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSString* IDFA = [[NSUserDefaults standardUserDefaults] objectForKey:@"idfa"];
     if (IDFV || IDFA) {
-        // Add your share logic here
-        NSLog(@"Sharing Device Info");
-        
-        // Share Link to ShareController
+        NSLog(@"-- Sharing Device Info");
         NSArray *items = @[[NSString stringWithFormat:@"Device Identifiers:\n\nIDFV: %@\nIDFA: %@",IDFV, IDFA]];
         UIActivityViewController* shareController = [[UIActivityViewController alloc]initWithActivityItems:items applicationActivities:nil];
         shareController.modalPresentationStyle = UIModalPresentationPopover;
@@ -83,7 +88,5 @@
         });
     }
 }
-
-
 
 @end

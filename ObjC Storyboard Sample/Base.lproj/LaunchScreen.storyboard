@@ -17,16 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="singular_full_logo" translatesAutoresizingMaskIntoConstraints="NO" id="OtP-aA-72V">
-                                <rect key="frame" x="16" y="399" width="361" height="91"/>
+                                <rect key="frame" x="16" y="362" width="361" height="128.33333333333337"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="OtP-aA-72V" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="T68-T9-BMH"/>
-                            <constraint firstItem="OtP-aA-72V" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="340" id="arr-jv-z4C"/>
-                            <constraint firstItem="OtP-aA-72V" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="gRE-29-BKe"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OtP-aA-72V" secondAttribute="bottom" constant="328" id="kll-f2-Syo"/>
+                            <constraint firstItem="OtP-aA-72V" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="C83-Ft-8ha"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OtP-aA-72V" secondAttribute="trailing" constant="16" id="Hsf-V1-l1s"/>
+                            <constraint firstItem="OtP-aA-72V" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="JvX-SS-sli"/>
+                            <constraint firstItem="OtP-aA-72V" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="XsI-5W-9UO"/>
                         </constraints>
                     </view>
                 </viewController>

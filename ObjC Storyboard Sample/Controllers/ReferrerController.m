@@ -17,25 +17,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"ReferrerController - viewDidLoad");
-    // Do any additional setup after loading the view.
+    NSLog(@"-- ReferrerController - viewDidLoad");
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:@"ReferrerController" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_ID];
+    [Singular event:EVENT_SNG_CONTENT_VIEW withArgs:dic];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
+    NSLog(@"-- ReferrerController - viewDidDisappear");
     // Clear the Referrer data so they are not used again.
     self.referrerIDField.text = nil;
     self.referrerNameField.text = nil;
 }
 
 - (IBAction)sharedClicked:(id)sender {
-    NSLog(@"Share Link Button Clicked");
+    NSLog(@"-- Share Link Button Clicked");
     
-    // Define Parameters for Referral Link
+    // Define variables for the Referral Short Link:
+    
+    // Add your Singular tracking link to be used as a base link:
     NSString* referrerBaseLink = @"https://joobjcstatic.sng.link/Cje1e/aknl?_dl=joobjcstatic%3A%2F%2Fmydeeplink/referrer&_smtype=3";
+    
+    // Add your Referrer ID and Name
     NSString* referrerID = self.referrerIDField.text;
     NSString* referrerName = self.referrerNameField.text;
+    
+    // Customize any Passthrough Parameters
     NSDictionary* passthroughParams = @{@"channel": @"sms"};
     
+    // Call the ReferrerShortLink Method to get your shortlink to share on Social
     [Singular createReferrerShortLink:referrerBaseLink
         referrerName:referrerName
         referrerId:referrerID
@@ -43,12 +53,13 @@
         completionHandler:^(NSString *shortLink, NSError *error) {
                 if (error) {
                     // Logic to retry/abort/modify the params passed to the function, based on the cause of the error
-                    NSLog(@"Error: %@", error);
+                    NSLog(@"-- Error: %@", error);
                 }
 
                 if (shortLink) {
-                    // Add your share logic here
-                    NSLog(@"Short Link Received: %@", shortLink);
+                    NSLog(@"-- Short Link Received: %@", shortLink);
+                    
+                    // Add your share logic here:
                     
                     // Share Link to ShareController
                     NSArray *items = @[[NSString stringWithFormat:@"Check out this new app: %@",shortLink]];
