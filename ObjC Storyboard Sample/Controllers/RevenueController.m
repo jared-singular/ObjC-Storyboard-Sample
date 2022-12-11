@@ -19,7 +19,9 @@
     [super viewDidLoad];
     NSLog(@"-- RevenueController - viewDidLoad");
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:@"RevenueController" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_ID];
+    [dic setValue:@"RevenueController" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_TYPE];
+    [dic setValue:@"2" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_ID];
+    [dic setValue:@"Revenue Method Buttons" forKey:ATTRIBUTE_SNG_ATTR_CONTENT];
     [Singular event:EVENT_SNG_CONTENT_VIEW withArgs:dic];
 }
 

@@ -19,7 +19,9 @@
     [super viewDidLoad];
     NSLog(@"-- ReferrerController - viewDidLoad");
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:@"ReferrerController" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_ID];
+    [dic setValue:@"ReferrerController" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_TYPE];
+    [dic setValue:@"5" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_ID];
+    [dic setValue:@"Share Link Simulation" forKey:ATTRIBUTE_SNG_ATTR_CONTENT];
     [Singular event:EVENT_SNG_CONTENT_VIEW withArgs:dic];
 }
 

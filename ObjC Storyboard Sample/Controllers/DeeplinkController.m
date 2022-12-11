@@ -21,7 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:@"DeeplinkController" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_ID];
+    [dic setValue:@"DeeplinkController" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_TYPE];
+    [dic setValue:@"4" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_ID];
+    [dic setValue:@"Deeplink and Open URL Details" forKey:ATTRIBUTE_SNG_ATTR_CONTENT];
     [Singular event:EVENT_SNG_CONTENT_VIEW withArgs:dic];
 }
 

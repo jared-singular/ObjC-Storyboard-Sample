@@ -19,7 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:@"PrivacyController" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_ID];
+    [dic setValue:@"PrivacyController" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_TYPE];
+    [dic setValue:@"0" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_ID];
+    [dic setValue:@"GDPR & CCPA Opt-Out Options" forKey:ATTRIBUTE_SNG_ATTR_CONTENT];
     [Singular event:EVENT_SNG_CONTENT_VIEW withArgs:dic];
 }
 

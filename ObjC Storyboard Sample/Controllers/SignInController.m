@@ -19,7 +19,9 @@
     [super viewDidLoad];
     NSLog(@"-- SignInController - viewDidLoad");
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:@"SignInController" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_ID];
+    [dic setValue:@"SignInController" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_TYPE];
+    [dic setValue:@"1" forKey:ATTRIBUTE_SNG_ATTR_CONTENT_ID];
+    [dic setValue:@"Simulated Login Button" forKey:ATTRIBUTE_SNG_ATTR_CONTENT];
     [Singular event:EVENT_SNG_CONTENT_VIEW withArgs:dic];
 }
 
