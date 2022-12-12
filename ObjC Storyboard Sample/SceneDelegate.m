@@ -91,7 +91,7 @@
     SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
     config.skAdNetworkEnabled = YES;
     config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
-    config.supportedDomains = @[@"www.jaredornstead.com"];
+    config.supportedDomains = @[@"www.your-web-domain.com"];
     config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
     
     return config;
