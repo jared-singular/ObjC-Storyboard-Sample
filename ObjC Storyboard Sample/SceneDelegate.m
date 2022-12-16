@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
 #import "SceneDelegate.h"
 #import "Singular.h"
 #import "Utils.h"
@@ -25,12 +26,6 @@
     // Printing Identifier for Vendor (IDFV) to Xcode Console for use in Singular SDK Console
     NSLog(@"-- Scene Delegate IDFV: %@", [[[UIDevice currentDevice] identifierForVendor] UUIDString]);
     
-    // (Optional) Get 3rd Party Identifiers to set in Global Properties:
-    // If 3rd party SDKs are providing any identifiers to Singular, the respective SDK must be initialized before Singular.
-    // Initialize third party SDK here and get/set variables needed for Singular.
-    NSString* thirdPartyKey = @"anonymousID";
-    NSString* thirdPartyID = @"2ed20738-059d-42b5-ab80-5aa0c530e3e1";
-    
     // Capture the OpenURL and store in UserDefaults
     NSURL* url = userActivity.webpageURL;
     [[NSUserDefaults standardUserDefaults] setObject:url.absoluteString forKey:OPENURL];
@@ -38,8 +33,6 @@
     // Starts a new Singular session from a backgrounded App
     SingularConfig *config = [self getConfig];
     config.userActivity = userActivity;
-    // Using Singular Global Properties feature to capture third party identifiers
-    [config setGlobalProperty:thirdPartyKey withValue:thirdPartyID overrideExisting:YES];
     [Singular start:config];
     
     // Request App Tracking Transparency when the App is Ready, provides IDFA on consent to Singular SDK
@@ -87,12 +80,20 @@
 - (SingularConfig *)getConfig {
     NSLog(@"-- Scene Delegate getConfig");
     
+    // (Optional) Get 3rd Party Identifiers to set in Global Properties:
+    // If 3rd party SDKs are providing any identifiers to Singular, the respective SDK must be initialized before Singular.
+    NSString* thirdPartyKey = @"anonymousID";
+    NSString* thirdPartyID = @"2ed20738-059d-42b5-ab80-5aa0c530e3e1";
+    
     // Singular Config Options
     SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
     config.skAdNetworkEnabled = YES;
     config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
-    config.supportedDomains = @[@"www.your-web-domain.com"];
+    config.supportedDomains = @[@"subdomain.mywebsite.com",@"anothersubdomain.myotherwebsite.com"];
     config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
+    // Using Singular Global Properties feature to capture third party identifiers
+    [config setGlobalProperty:thirdPartyKey withValue:thirdPartyID overrideExisting:YES];
+    [Singular setSessionTimeout:120];
     
     return config;
 }

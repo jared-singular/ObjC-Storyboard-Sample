@@ -7,13 +7,14 @@
 
 
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
 #import "AppDelegate.h"
 #import "Singular.h"
 #import "Utils.h"
 #import "TabController.h"
 #import "Constants.h"
 
-@interface AppDelegate ()
+@interface AppDelegate()
 
 @end
 

@@ -60,6 +60,14 @@
     [Singular revenue:@"EUR" amount:5.00 productSKU:@"SKU1928375"
     productName:@"Reservation Fee" productCategory:@"Fee"
     productQuantity:1 productPrice:5.00];
+    
+    // Send a Revenue Event with attributes in a dictionary
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:@"100% Organic Cotton Mixed Plaid Flannel Shirt" forKey:ATTRIBUTE_SNG_ATTR_ITEM_DESCRIPTION];
+    [dic setValue:@"$69.95" forKey:ATTRIBUTE_SNG_ATTR_ITEM_PRICE];
+    [dic setValue:@"5 Star" forKey:ATTRIBUTE_SNG_ATTR_RATING];
+    [dic setValue:@"Flannel Shirt" forKey:ATTRIBUTE_SNG_ATTR_SEARCH_STRING];
+    [Singular revenue:@"USD" amount:19.99 withAttributes:dic];
 }
 
 - (IBAction)customRevenueMethodClicked:(id)sender {
@@ -73,6 +81,14 @@
     amount:5.00 productSKU:@"SKU1928375"
     productName:@"Reservation Fee" productCategory:@"Fee"
     productQuantity:1 productPrice:5.00];
+    
+    // Send a Custom Revenue Event with attributes in a dictionary
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:@"100% Organic Cotton Mixed Plaid Flannel Shirt" forKey:ATTRIBUTE_SNG_ATTR_ITEM_DESCRIPTION];
+    [dic setValue:@"$69.95" forKey:ATTRIBUTE_SNG_ATTR_ITEM_PRICE];
+    [dic setValue:@"5 Star" forKey:ATTRIBUTE_SNG_ATTR_RATING];
+    [dic setValue:@"Flannel Shirt" forKey:ATTRIBUTE_SNG_ATTR_SEARCH_STRING];
+    [Singular customRevenue:@"MyCustomRevenue" currency:@"USD" amount:44.99 withAttributes:dic];
 }
 
 @end
