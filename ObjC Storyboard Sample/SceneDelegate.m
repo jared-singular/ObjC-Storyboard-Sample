@@ -87,14 +87,13 @@
     
     // Singular Config Options
     SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
-    config.skAdNetworkEnabled = YES;
     config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
-    config.supportedDomains = @[@"subdomain.mywebsite.com",@"anothersubdomain.myotherwebsite.com"];
     config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
+    
     // Using Singular Global Properties feature to capture third party identifiers
     [config setGlobalProperty:thirdPartyKey withValue:thirdPartyID overrideExisting:YES];
     [Singular setSessionTimeout:120];
-    
+            
     return config;
 }
 
