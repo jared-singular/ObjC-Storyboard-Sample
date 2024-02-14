@@ -88,7 +88,12 @@
     // Singular Config Options
     SingularConfig* config = [[SingularConfig alloc] initWithApiKey:APIKEY andSecret:SECRET];
     config.waitForTrackingAuthorizationWithTimeoutInterval = 300;
-    config.singularLinksHandler = ^(SingularLinkParams * params) {[self processDeeplink:params];};
+    
+    // Call AttributionInfoHandler
+    config.deviceAttributionCallback = ^(NSDictionary * attributionInfo) {[self attributionInfoHandler:attributionInfo];};
+    
+    // Call SingularLinkHandler
+    config.singularLinksHandler = ^(SingularLinkParams * params) {[self handleDeeplink:params];};
     
     // Using Singular Global Properties feature to capture third party identifiers
     [config setGlobalProperty:thirdPartyKey withValue:thirdPartyID overrideExisting:YES];
@@ -97,13 +102,33 @@
     return config;
 }
 
-- (void)processDeeplink:(SingularLinkParams*)params{
-    NSLog(@"-- Scene Delegate processDeeplink");
+- (void)attributionInfoHandler:(NSDictionary*)attributionInfo{
+    NSLog(@"-- Scene Delegate attributionInfoHandler");
+    // Check if attributionInfo exists
+    if (attributionInfo) {
+        // Print the contents of the attributionInfo dictionary
+        NSLog(@"-- Singular Attribution Info: %@", attributionInfo);
+    } else {
+        // If attributionInfo is nil, print a message indicating that it doesn't exist
+        NSLog(@"-- Singular attributionInfo is nil");
+    }
+}
+
+
+- (void)handleDeeplink:(SingularLinkParams*)params{
+    NSLog(@"-- Scene Delegate handleDeeplink");
     
     // Get Deeplink data from Singular Link
-    NSString* deeplink = [params getDeepLink];
-    NSString* passthrough = [params getPassthrough];
-    NSString* isDeferredDeeplink = [params isDeferred] ? @"Yes": @"No";
+    NSString *deeplink = [params getDeepLink];
+    NSString *passthrough = [params getPassthrough];
+    NSString *isDeferredDeeplink = [params isDeferred] ? @"Yes" : @"No";
+    NSDictionary *urlParams = [params getUrlParameters];
+    
+    // Log the SingularLinkParams
+    NSLog(@"deeplink: %@", deeplink);
+    NSLog(@"passthrough: %@", passthrough);
+    NSLog(@"isDeferredDeeplink: %@", isDeferredDeeplink);
+    NSLog(@"urlParams: %@", urlParams);
     
     // Store deeplink data in UserDefaults for access from DeeplinkController
     [[NSUserDefaults standardUserDefaults] setObject:deeplink forKey:DEEPLINK];

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F29AE072B5887D400A04D85 /* libSingular.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F29AE052B58825600A04D85 /* libSingular.a */; };
-		7F29AE132B5888A600A04D85 /* Singular.js in Resources */ = {isa = PBXBuildFile; fileRef = 7F29AE0C2B5888A600A04D85 /* Singular.js */; };
+		7F29AE1E2B588AEB00A04D85 /* Singular.js in Resources */ = {isa = PBXBuildFile; fileRef = 7F29AE172B588AEB00A04D85 /* Singular.js */; };
+		7F29AE202B588B1D00A04D85 /* libSingular.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F29AE162B588AEB00A04D85 /* libSingular.a */; };
 		7F851EFF293ACE9F00D07264 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F851EFE293ACE9F00D07264 /* libsqlite3.0.tbd */; };
 		7F851F01293ACEA900D07264 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F851F00293ACEA900D07264 /* SystemConfiguration.framework */; };
 		7F851F03293ACEB100D07264 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F851F02293ACEB100D07264 /* Security.framework */; };
@@ -36,14 +36,14 @@
 
 /* Begin PBXFileReference section */
 		7F29AE052B58825600A04D85 /* libSingular.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSingular.a; path = "3rd Party SDKs/Singular-iOS-sdk-v12.2.0/libSingular.a"; sourceTree = "<group>"; };
-		7F29AE0A2B5888A600A04D85 /* SingularConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingularConfig.h; sourceTree = "<group>"; };
-		7F29AE0B2B5888A600A04D85 /* libSingular.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSingular.a; sourceTree = "<group>"; };
-		7F29AE0C2B5888A600A04D85 /* Singular.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Singular.js; sourceTree = "<group>"; };
-		7F29AE0D2B5888A600A04D85 /* SingularLinkParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingularLinkParams.h; sourceTree = "<group>"; };
-		7F29AE0E2B5888A600A04D85 /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Events.h; sourceTree = "<group>"; };
-		7F29AE0F2B5888A600A04D85 /* Attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attributes.h; sourceTree = "<group>"; };
-		7F29AE102B5888A600A04D85 /* SingularAdData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingularAdData.h; sourceTree = "<group>"; };
-		7F29AE112B5888A600A04D85 /* Singular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singular.h; sourceTree = "<group>"; };
+		7F29AE152B588AEB00A04D85 /* SingularConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingularConfig.h; sourceTree = "<group>"; };
+		7F29AE162B588AEB00A04D85 /* libSingular.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSingular.a; sourceTree = "<group>"; };
+		7F29AE172B588AEB00A04D85 /* Singular.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Singular.js; sourceTree = "<group>"; };
+		7F29AE182B588AEB00A04D85 /* SingularLinkParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingularLinkParams.h; sourceTree = "<group>"; };
+		7F29AE192B588AEB00A04D85 /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Events.h; sourceTree = "<group>"; };
+		7F29AE1A2B588AEB00A04D85 /* Attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attributes.h; sourceTree = "<group>"; };
+		7F29AE1B2B588AEB00A04D85 /* SingularAdData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingularAdData.h; sourceTree = "<group>"; };
+		7F29AE1C2B588AEB00A04D85 /* Singular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singular.h; sourceTree = "<group>"; };
 		7F851EFE293ACE9F00D07264 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		7F851F00293ACEA900D07264 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7F851F02293ACEB100D07264 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -88,11 +88,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F29AE202B588B1D00A04D85 /* libSingular.a in Frameworks */,
 				7F851F0F293ACEE100D07264 /* AdServices.framework in Frameworks */,
 				7F851F0D293ACED800D07264 /* StoreKit.framework in Frameworks */,
 				7F851F0B293ACED000D07264 /* WebKit.framework in Frameworks */,
 				7F851F09293ACECA00D07264 /* iAd.framework in Frameworks */,
-				7F29AE072B5887D400A04D85 /* libSingular.a in Frameworks */,
 				7F851F07293ACEC200D07264 /* AdSupport.framework in Frameworks */,
 				7F851F05293ACEBA00D07264 /* libz.tbd in Frameworks */,
 				7F851F03293ACEB100D07264 /* Security.framework in Frameworks */,
@@ -107,24 +107,24 @@
 		7F29AE082B5888A600A04D85 /* 3rd Party SDKs */ = {
 			isa = PBXGroup;
 			children = (
-				7F29AE092B5888A600A04D85 /* Singular-iOS-sdk-v12.2.0 */,
+				7F29AE142B588AEB00A04D85 /* Singular-iOS-sdk-v12.2.1 */,
 			);
 			path = "3rd Party SDKs";
 			sourceTree = "<group>";
 		};
-		7F29AE092B5888A600A04D85 /* Singular-iOS-sdk-v12.2.0 */ = {
+		7F29AE142B588AEB00A04D85 /* Singular-iOS-sdk-v12.2.1 */ = {
 			isa = PBXGroup;
 			children = (
-				7F29AE0A2B5888A600A04D85 /* SingularConfig.h */,
-				7F29AE0B2B5888A600A04D85 /* libSingular.a */,
-				7F29AE0C2B5888A600A04D85 /* Singular.js */,
-				7F29AE0D2B5888A600A04D85 /* SingularLinkParams.h */,
-				7F29AE0E2B5888A600A04D85 /* Events.h */,
-				7F29AE0F2B5888A600A04D85 /* Attributes.h */,
-				7F29AE102B5888A600A04D85 /* SingularAdData.h */,
-				7F29AE112B5888A600A04D85 /* Singular.h */,
+				7F29AE152B588AEB00A04D85 /* SingularConfig.h */,
+				7F29AE162B588AEB00A04D85 /* libSingular.a */,
+				7F29AE172B588AEB00A04D85 /* Singular.js */,
+				7F29AE182B588AEB00A04D85 /* SingularLinkParams.h */,
+				7F29AE192B588AEB00A04D85 /* Events.h */,
+				7F29AE1A2B588AEB00A04D85 /* Attributes.h */,
+				7F29AE1B2B588AEB00A04D85 /* SingularAdData.h */,
+				7F29AE1C2B588AEB00A04D85 /* Singular.h */,
 			);
-			path = "Singular-iOS-sdk-v12.2.0";
+			path = "Singular-iOS-sdk-v12.2.1";
 			sourceTree = "<group>";
 		};
 		7F851EFD293ACE9F00D07264 /* Frameworks */ = {
@@ -264,7 +264,7 @@
 				7FEEF507293A6ED400AA434F /* LaunchScreen.storyboard in Resources */,
 				7FEEF504293A6ED400AA434F /* Assets.xcassets in Resources */,
 				7FEEF502293A6ED200AA434F /* Main.storyboard in Resources */,
-				7F29AE132B5888A600A04D85 /* Singular.js in Resources */,
+				7F29AE1E2B588AEB00A04D85 /* Singular.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,7 +451,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/3rd\\ Party\\ SDKs/Singular-iOS-sdk-v12.2.0",
+					"$(PROJECT_DIR)/3rd\\ Party\\ SDKs/Singular-iOS-sdk-v12.2.1",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "jaredornstead.ObjC-Storyboard-Sample";
@@ -489,7 +489,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/3rd\\ Party\\ SDKs/Singular-iOS-sdk-v12.2.0",
+					"$(PROJECT_DIR)/3rd\\ Party\\ SDKs/Singular-iOS-sdk-v12.2.1",
 				);
 				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = NO;

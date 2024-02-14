@@ -5,8 +5,8 @@
 //  Created by Jared Ornstead on 12/2/22.
 //
 
-#define APIKEY @"<YOUR_API_KEY>"
-#define SECRET @"<YOUR_SECRET>"
+#define APIKEY @"API_KEY"
+#define SECRET @"SECRET"
 
 #define DEEPLINK @"deeplink"
 #define PASSTHROUGH @"passthrough"
